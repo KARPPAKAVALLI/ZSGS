@@ -1,0 +1,90 @@
+﻿1. doubling H        
+public List<Integer> doubling(List<Integer> nums) {
+  nums.replaceAll(n -> n * 2);
+  return nums;
+}
+ 
+2. square
+public List<Integer> square(List<Integer> nums) {
+  List<Integer> a=new ArrayList<>();
+  for(int i:nums){
+    a.add(i*i);
+  }
+  return a;
+}
+         
+3. addStar
+public List<String> addStar(List<String> strings) {
+  List<String> a=new ArrayList<>();
+  for(String s:strings){
+    a.add(s+"*");
+  }
+  return a;
+}
+
+
+4. copies3
+public List<String> copies3(List<String> strings) {
+  List<String> a=new ArrayList<>();
+  for(String s:strings){
+    a.add(s+s+s);
+  }
+  return a;
+}
+         
+5. moreY         
+public List<String> moreY(List<String> strings) {
+  List<String> a=new ArrayList<>();
+  for(String s:strings){
+    a.add("y"+s+"y");
+  }
+  return a;
+}
+
+
+
+
+
+
+6. math1
+public List<Integer> math1(List<Integer> nums) {
+  List<Integer> a=new ArrayList<>();
+  for(int i:nums){
+    a.add((i+1)*10);
+  }
+  return a;
+}
+
+
+7. rightDigit
+public List<Integer> rightDigit(List<Integer> nums) {
+  List<Integer> a=new ArrayList<>();
+  for(int i:nums){
+    a.add(i%10);
+  }
+  return a;
+}
+         
+8. lower         
+public List<String> lower(List<String> strings) {
+  List<String> a=new ArrayList<>();
+  for(String i:strings){
+    a.add(i.toLowerCase());
+  }
+  return a;
+}
+
+
+9. noX
+public List<String> noX(List<String> strings) {
+  List<String> a=new ArrayList<>();
+  for(String i:strings){
+    String b="";
+    for(int j=0;j<i.length();j++){
+      if(i.charAt(j)!='x')
+      b+=i.charAt(j);
+    }
+    a.add(b);
+  }
+  return a;
+}

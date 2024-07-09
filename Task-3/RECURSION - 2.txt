@@ -1,0 +1,142 @@
+﻿1. groupSum
+public boolean groupSum(int start, int[] nums, int target) {
+  if (start >= nums.length) return (target == 0);
+  if (groupSum(start + 1, nums, target - nums[start])) return true;
+  if (groupSum(start + 1, nums, target)) return true;
+  return false;
+}
+
+
+2. groupSum6
+public boolean groupSum6(int start, int[] nums, int target) {
+  if (start >= nums.length) {
+        return target == 0;
+    }
+    if (nums[start] == 6) {
+        return groupSum6(start + 1, nums, target - 6);
+    }
+    return groupSum6(start + 1, nums, target - nums[start]) || groupSum6(start + 1, nums, target);
+}
+
+
+3. groupNoAdj
+public boolean groupNoAdj(int start, int[] nums, int target) {
+  if (start >= nums.length) {
+        return target == 0; 
+    }
+    boolean include = groupNoAdj(start + 2, nums, target - nums[start]);
+    boolean exclude = groupNoAdj(start + 1, nums, target);
+    return include || exclude;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+4. groupSum5
+public boolean groupSum5(int start, int[] nums, int target) {
+  if (start >= nums.length) {
+        return target == 0; 
+    }
+  if (nums[start] % 5 == 0) {
+       
+        if (start + 1 < nums.length && nums[start + 1] == 1) {
+            return groupSum5(start + 2, nums, target - nums[start]);
+        } else {
+            return groupSum5(start + 1, nums, target - nums[start]);
+        }
+    }
+
+
+    boolean include = groupSum5(start + 1, nums, target - nums[start]);
+    boolean exclude = groupSum5(start + 1, nums, target);
+    return include || exclude;
+}
+5. groupSumClump
+public boolean groupSumClump(int start, int[] nums, int target) {
+  if (start >= nums.length) {
+        return target == 0; 
+    }
+    int sum = nums[start];
+    int count = 1;
+    while (start + count < nums.length && nums[start + count] == nums[start]) {
+        sum += nums[start + count];
+        count++;
+    }
+    boolean include = groupSumClump(start + count, nums, target - sum);
+    boolean exclude = groupSumClump(start + count, nums, target);
+    return include || exclude;
+}
+
+
+
+
+6. splitArray
+public boolean splitArray(int[] nums) {
+    return splitHelper(0, nums, 0, 0);
+}
+
+
+private boolean splitHelper(int start, int[] nums, int sum1, int sum2) {
+    if (start >= nums.length) {
+        return sum1 == sum2; 
+    }
+    if (splitHelper(start + 1, nums, sum1 + nums[start], sum2)) {
+        return true;
+    }
+   if (splitHelper(start + 1, nums, sum1, sum2 + nums[start])) {
+        return true;
+    }
+    return false;
+}
+
+
+7. splitOdd10
+public boolean splitOdd10(int[] nums) {
+    return splitHelper(0, nums, 0, 0);
+}
+
+
+private boolean splitHelper(int start, int[] nums, int sum1, int sum2) {
+    if (start >= nums.length) {
+        return (sum1 % 10 == 0 && sum2 % 2 != 0) || (sum2 % 10 == 0 && sum1 % 2 != 0);
+    }
+    if (splitHelper(start + 1, nums, sum1 + nums[start], sum2)) {
+        return true;
+    }
+    if (splitHelper(start + 1, nums, sum1, sum2 + nums[start])) {
+        return true;
+    }
+    return false;
+}
+8. split53
+public boolean split53(int[] nums) {
+    return splitHelper(0, nums, 0, 0);
+}
+
+
+private boolean splitHelper(int start, int[] nums, int sum5, int sum3) {
+    if (start >= nums.length) {
+        return sum5 == sum3; 
+    }
+    if (nums[start] % 5 == 0) {
+        return splitHelper(start + 1, nums, sum5 + nums[start], sum3);
+    }
+    if (nums[start] % 3 == 0) {
+        return splitHelper(start + 1, nums, sum5, sum3 + nums[start]);
+    }
+    if (splitHelper(start + 1, nums, sum5 + nums[start], sum3)) {
+        return true;
+    }
+    if (splitHelper(start + 1, nums, sum5, sum3 + nums[start])) {
+        return true;
+    }
+    return false;
+}
